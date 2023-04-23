@@ -50,47 +50,12 @@ const addBooktoHandler = (request, h) => {
   return response
 }
 
-const getAllBookByHandler = (request, h) => {
-  const { reading, finished, name } = request.query
-  if (reading) {
-    const bookfilter = books.filter((b) => Number(b.reading) === Number(reading))
-    const response = h.response({
-      status: 'success',
-      data: {
-        books: bookfilter
-      }
-    })
-    response.code(200)
-    return response
-  } else if (finished) {
-    const bookfilter = books.filter((b) => Number(b.finished) === Number(finished))
-    const response = h.response({
-      status: 'success',
-      data: {
-        books: bookfilter
-      }
-    })
-    response.code(200)
-    return response
-  } else if (name) {
-    const bookfilter = books.filter((b) => b.name.toLowerCase().includes(name.toLowerCase()))
-    const response = h.response({
-      status: 'success',
-      data: {
-        books: bookfilter
-      }
-    })
-    response.code(200)
-    return response
-  } else {
-    const response = h.response({
-      status: 'success',
-      data: {
-        books
-      }
-    })
-    response.code(200)
-    return response
+const getAllBookByHandler = () => {
+  return {
+    status: 'success',
+    data: {
+      books
+    }
   }
 }
 
